@@ -51,6 +51,6 @@ background: #555;
 .eye:hover  > .shut span {
 	height: 100%;
 }
-.eye:hover  > .shut span, .eye:active  > .shut span {
+.eye:active  > .shut span {
 	height: 100%;
 }
