@@ -3,3 +3,8 @@ margin:0
 padding:0;
 background:#333
 }
+.eye{
+	width:200px;
+	height:200px;
+	background: #fff;
+}
