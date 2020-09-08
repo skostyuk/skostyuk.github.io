@@ -42,8 +42,10 @@ background: #555;
 	height: 15%;
 	background: #f0dc82;
 	border-radius: 0 0 60% 60%;
-	transition: 0.4s all;
+	-webkit-transition: transform 200ms;
+    -webkit-transition: -webkit-transform 200ms;
+	transition: all 0.4s;
 }
-.eye:hover > .shut span {
+.eye:hover  > .shut span, .eye:active  > .shut span {
 	height: 100%;
 }
