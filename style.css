@@ -42,11 +42,14 @@ background: #555;
 	height: 15%;
 	background: #f0dc82;
 	border-radius: 0 0 60% 60%;
-	-webkit-transition: top 0.5s ease-out 0.5s;
-     	-moz-transition: top 0.5s ease-out 0.5s;
-     	-o-transition: top 0.5s ease-out 0.5s;
-	transition: top 0.5s ease-out 0.5s;
+	-webkit-transition: top 1s ease-out 0.5s;
+     	-moz-transition: top 1s ease-out 0.5s;
+     	-o-transition: top 1s ease-out 0.5s;
+	transition: top 1s ease-out 0.5s;
 	/*transition: all 0.4s;*/
+}
+.eye:hover  > .shut span {
+	height: 100%;
 }
 .eye:hover  > .shut span, .eye:active  > .shut span {
 	height: 100%;
