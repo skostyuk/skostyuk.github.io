@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simple Game</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body id="screen" style="background-color:#004488; width:1920px; height:1080px;">
+	<script>
+	document.getElementById("screen").addEventListener("click", myFunction);
+
+	function myFunction() {
+		let setColor = '#' + getRandomInt(999999);
+		//alert("Hello myFunction" + setColor);
+		document.getElementById("screen").style.backgroundColor = setColor;
+	}
+	
+	function getRandomInt(max) {
+		return Math.floor(Math.random() * max);
+	}
+	</script>
+  </body>
+</html>
