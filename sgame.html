@@ -10,24 +10,25 @@
   <body id="screen" style="background-color:#004488; width:1500px; height: 800px">
 	<script>
 		let button = document.querySelector("#screen");
-button.addEventListener("mouseup", (e) => {
-  switch (e.button) {
-    case 0:
-      console.log("Left button clicked.");
-      break;
-    case 1:
-      console.log("Middle button clicked.");
-      break;
-    case 2:
-      console.log("Right button clicked.");
-      break;
-    default:
-      console.log(`Unknown button code: ${e.button}`);
-  }
-});
-
-	document.getElementById("screen").addEventListener("click", myFunction);
-
+		button.addEventListener("mouseup", (e) => {
+		  switch (e.button) {
+			case 0:
+			  console.log("Left button clicked.");
+			  myFunction();
+			  e.stopPropagation();
+			  e.preventDefault();
+			  break;
+			case 1:
+			  console.log("Middle button clicked.");
+			  break;
+			case 2:
+			  console.log("Right button clicked.");
+			  break;
+			default:
+			  console.log(`Unknown button code: ${e.button}`);
+		  }
+		});
+	document.addEventListener('contextmenu', event => event.preventDefault());
 	function myFunction() {
 		let setColor = '#' + getRandomInt(999999);
 		//alert("Hello myFunction" + setColor);
