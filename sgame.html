@@ -87,7 +87,10 @@
       }
 
       // Оновити позицію кола при завантаженні сторінки
-      window.addEventListener("load", updateCirclePosition);
+      window.addEventListener("load", () => {
+        updateCirclePosition(); // Оновлюємо позицію при старті
+        circle.style.transition = "0s"; // Вимикаємо перехід для статичної позиції
+      });
 
       // Оновити позицію кола при зміні орієнтації екрану
       window.addEventListener("orientationchange", updateCirclePosition);
