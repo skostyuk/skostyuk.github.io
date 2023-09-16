@@ -46,21 +46,17 @@
 
     <script>
       let circle = document.querySelector("#circle");
+      let circleWidth = 100; // Розмір круга
+      let circleHeight = 100; // Розмір круга
       let screenWidth = window.innerWidth;
       let screenHeight = window.innerHeight;
 
       circle.addEventListener("mousedown", (e) => {
         if (e.button === 0) {
-          let randomX = Math.floor(Math.random() * (screenWidth - 100));
-          let randomY = Math.floor(Math.random() * (screenHeight - 100));
+          let randomX = Math.floor(Math.random() * (screenWidth - circleWidth));
+          let randomY = Math.floor(Math.random() * (screenHeight - circleHeight));
           let circleColor = getRandomColor();
           let backgroundColor = getComplementaryColor(circleColor);
-
-          // Перевірка, щоб не виходити за межі видимості
-          if (randomX < 0) randomX = 0;
-          if (randomX > screenWidth - 100) randomX = screenWidth - 100;
-          if (randomY < 0) randomY = 0;
-          if (randomY > screenHeight - 100) randomY = screenHeight - 100;
 
           circle.style.left = randomX + "px";
           circle.style.top = randomY + "px";
