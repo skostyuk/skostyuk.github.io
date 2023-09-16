@@ -9,7 +9,7 @@
       body {
         margin: 0;
         padding: 0;
-        overflow: hidden; /* Заблокувати прокрутку сторінки */
+        overflow: hidden;
       }
 
       #screen {
@@ -23,15 +23,15 @@
         color: white;
         cursor: pointer;
         position: relative;
+        transition: background-color 0.5s; /* Анімація зміни фону */
       }
 
       #circle {
         width: 100px;
         height: 100px;
-        background-color: #ff5733;
         border-radius: 50%;
         position: absolute;
-        transition: 0.5s; /* Додали плавну анімацію */
+        transition: 0.5s;
       }
     </style>
   </head>
@@ -47,20 +47,28 @@
 
       circle.addEventListener("mousedown", (e) => {
         if (e.button === 0) {
-          let randomX = Math.floor(Math.random() * (screenWidth - 100)); // Випадкова позиція X
-          let randomY = Math.floor(Math.random() * (screenHeight - 100)); // Випадкова позиція Y
-          let setColor = '#' + getRandomInt(999999); // Випадковий колір
-          
+          let randomX = Math.floor(Math.random() * (screenWidth - 100));
+          let randomY = Math.floor(Math.random() * (screenHeight - 100));
+          let circleColor = getRandomColor();
+          let backgroundColor = getComplementaryColor(circleColor);
+
           circle.style.left = randomX + "px";
           circle.style.top = randomY + "px";
-          circle.style.backgroundColor = setColor;
+          circle.style.backgroundColor = circleColor;
+          document.getElementById("screen").style.backgroundColor = backgroundColor;
         }
       });
 
       document.addEventListener('contextmenu', event => event.preventDefault());
 
-      function getRandomInt(max) {
-        return Math.floor(Math.random() * max);
+      function getRandomColor() {
+        return '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+      }
+
+      function getComplementaryColor(hexColor) {
+        // Функція для знаходження комплементарного кольору
+        hexColor = hexColor.replace('#', '');
+        return '#' + (0xFFFFFF ^ parseInt(hexColor, 16)).toString(16);
       }
     </script>
   </body>
