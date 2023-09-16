@@ -33,9 +33,6 @@
         position: absolute;
         transition: 0.5s;
         background-color: #ff5733;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
       }
     </style>
   </head>
@@ -46,15 +43,15 @@
 
     <script>
       let circle = document.querySelector("#circle");
-      let circleWidth = 100; // Розмір круга
-      let circleHeight = 100; // Розмір круга
+      let circleWidth = 100;
+      let circleHeight = 100;
       let screenWidth = window.innerWidth;
       let screenHeight = window.innerHeight;
 
       circle.addEventListener("mousedown", (e) => {
         if (e.button === 0) {
-          let randomX = Math.floor(Math.random() * (screenWidth - circleWidth));
-          let randomY = Math.floor(Math.random() * (screenHeight - circleHeight));
+          let randomX = getRandomInt(screenWidth - circleWidth);
+          let randomY = getRandomInt(screenHeight - circleHeight);
           let circleColor = getRandomColor();
           let backgroundColor = getComplementaryColor(circleColor);
 
@@ -66,6 +63,10 @@
       });
 
       document.addEventListener('contextmenu', event => event.preventDefault());
+
+      function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
+      }
 
       function getRandomColor() {
         return '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
