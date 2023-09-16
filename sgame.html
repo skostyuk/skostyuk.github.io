@@ -33,9 +33,6 @@
         position: absolute;
         transition: 0.5s;
         background-color: #ff5733;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
       }
     </style>
   </head>
@@ -48,34 +45,23 @@
       let circle = document.querySelector("#circle");
       let circleWidth = 100;
       let circleHeight = 100;
-      let isClickable = false;
-
-      function updateCirclePosition() {
-        let screenWidth = window.innerWidth;
-        let screenHeight = window.innerHeight;
-
-        let randomX = getRandomInt(screenWidth - circleWidth);
-        let randomY = getRandomInt(screenHeight - circleHeight);
-        let circleColor = getRandomColor();
-        let backgroundColor = getComplementaryColor(circleColor);
-
-        circle.style.left = randomX + "px";
-        circle.style.top = randomY + "px";
-        circle.style.backgroundColor = circleColor;
-        document.getElementById("screen").style.backgroundColor = backgroundColor;
-      }
+      let screenWidth = window.innerWidth;
+      let screenHeight = window.innerHeight;
 
       circle.addEventListener("mousedown", (e) => {
         if (e.button === 0) {
-          if (isClickable) {
-            updateCirclePosition();
-          } else {
-            isClickable = true;
-          }
+          let randomX = getRandomInt(screenWidth - circleWidth);
+          let randomY = getRandomInt(screenHeight - circleHeight);
+          let circleColor = getRandomColor();
+          let backgroundColor = getComplementaryColor(circleColor);
+
+          circle.style.left = randomX + "px";
+          circle.style.top = randomY + "px";
+          circle.style.backgroundColor = circleColor;
+          document.getElementById("screen").style.backgroundColor = backgroundColor;
         }
       });
 
-      document.addEventListener("resize", updateCirclePosition);
       document.addEventListener('contextmenu', event => event.preventDefault());
 
       function getRandomInt(max) {
@@ -90,15 +76,6 @@
         hexColor = hexColor.replace('#', '');
         return '#' + (0xFFFFFF ^ parseInt(hexColor, 16)).toString(16);
       }
-
-      // Оновити позицію кола при завантаженні сторінки
-      window.addEventListener("load", () => {
-        circle.style.transition = "0s"; // Вимикаємо перехід для статичної позиції
-        updateCirclePosition(); // Оновлюємо позицію при старті
-      });
-
-      // Оновити позицію кола при зміні орієнтації екрану
-      window.addEventListener("orientationchange", updateCirclePosition);
     </script>
   </body>
 </html>
