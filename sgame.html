@@ -48,6 +48,7 @@
       let circle = document.querySelector("#circle");
       let circleWidth = 100;
       let circleHeight = 100;
+      let isClickable = false;
 
       function updateCirclePosition() {
         let screenWidth = window.innerWidth;
@@ -66,7 +67,11 @@
 
       circle.addEventListener("mousedown", (e) => {
         if (e.button === 0) {
-          updateCirclePosition();
+          if (isClickable) {
+            updateCirclePosition();
+          } else {
+            isClickable = true;
+          }
         }
       });
 
