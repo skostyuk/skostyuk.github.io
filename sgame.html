@@ -32,10 +32,10 @@
         border-radius: 50%;
         position: absolute;
         transition: 0.5s;
-        background-color: #ff5733; /* Початковий колір для круга */
-        left: 50%; /* Початкова позиція X по центру екрану */
-        top: 50%; /* Початкова позиція Y по центру екрану */
-        transform: translate(-50%, -50%); /* Це центрує круг по центру екрану */
+        background-color: #ff5733;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
       }
     </style>
   </head>
@@ -55,6 +55,12 @@
           let randomY = Math.floor(Math.random() * (screenHeight - 100));
           let circleColor = getRandomColor();
           let backgroundColor = getComplementaryColor(circleColor);
+
+          // Перевірка, щоб не виходити за межі видимості
+          if (randomX < 0) randomX = 0;
+          if (randomX > screenWidth - 100) randomX = screenWidth - 100;
+          if (randomY < 0) randomY = 0;
+          if (randomY > screenHeight - 100) randomY = screenHeight - 100;
 
           circle.style.left = randomX + "px";
           circle.style.top = randomY + "px";
