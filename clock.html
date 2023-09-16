@@ -37,13 +37,18 @@ function start(){
 }
 </script>
 <style type="text/css">
-	#d1 { 
-		top: 25%; 
-		left: 15%; 
-		font-family: Courier New;
-		font-size:100pt; 
-		position: fixed;
-	}
+	body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #d1 {
+            font-family: Courier New;
+            font-size: 10vw; /* Зробимо розмір тексту відсотковим відносно ширини вікна браузера */
+        }
 </style>
 </head>
 <body onload="start()" onkeyup="excEnd(event)">
