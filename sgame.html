@@ -32,7 +32,15 @@
         border-radius: 50%;
         position: absolute;
         background-color: #ff5733;
-        transition: transform 0.5s, background-color 0.5s;
+        transition: transform 0.5s, background-color 0.5s, opacity 0.5s;
+      }
+
+      #gif {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
 
       #audio {
@@ -43,11 +51,13 @@
   <body>
     <div id="screen">
       <div id="circle"></div>
+      <img id="gif" src="/media/dog_barking.gif" alt="Barking Dog" />
     </div>
     <audio id="audio" src="/media/wild-dog-bark.mp3"></audio>
 
     <script>
       let circle = document.querySelector("#circle");
+      let gif = document.querySelector("#gif");
       let circleWidth = 100;
       let circleHeight = 100;
       let screenWidth = window.innerWidth;
@@ -55,7 +65,7 @@
 
       circle.addEventListener("mousedown", (e) => {
         if (e.button === 0) {
-          // Змінюємо розмір кульки зі звуком
+          // Змінюємо розмір кульки зі звуком та анімацією
           playSound();
           circle.style.transform = "scale(1.5)"; // Збільшуємо розмір
           setTimeout(() => {
@@ -71,6 +81,12 @@
             circle.style.top = randomY + "px";
             circle.style.backgroundColor = circleColor;
             document.getElementById("screen").style.backgroundColor = backgroundColor;
+
+            // Показуємо гіфку протягом 1 секунди
+            gif.style.display = "block";
+            setTimeout(() => {
+              gif.style.display = "none";
+            }, 1000);
           }, 300);
         }
       });
