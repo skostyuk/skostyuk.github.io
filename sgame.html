@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
     <title>Simple Game for Toddlers</title>
     <style>
       body {
@@ -44,7 +44,7 @@
     <div id="screen">
       <div id="circle"></div>
     </div>
-    <audio id="audio" src="your_audio_file.mp3"></audio>
+    <audio id="audio" src="media/audio_file.mp3"></audio>
 
     <script>
       let circle = document.querySelector("#circle");
@@ -55,22 +55,23 @@
 
       circle.addEventListener("mousedown", (e) => {
         if (e.button === 0) {
-          let randomX = getRandomInt(screenWidth - circleWidth);
-          let randomY = getRandomInt(screenHeight - circleHeight);
-          let circleColor = getRandomColor();
-          let backgroundColor = getComplementaryColor(circleColor);
-
-          // Змінюємо розмір кульки і відтворюємо звук
+          // Змінюємо розмір кульки зі звуком
           playSound();
           circle.style.transform = "scale(1.5)"; // Збільшуємо розмір
           setTimeout(() => {
             circle.style.transform = "scale(1)"; // Повертаємо розмір до звичайного
-          }, 300);
 
-          circle.style.left = randomX + "px";
-          circle.style.top = randomY + "px";
-          circle.style.backgroundColor = circleColor;
-          document.getElementById("screen").style.backgroundColor = backgroundColor;
+            let randomX = getRandomInt(screenWidth - circleWidth);
+            let randomY = getRandomInt(screenHeight - circleHeight);
+            let circleColor = getRandomColor();
+            let backgroundColor = getComplementaryColor(circleColor);
+
+            // Після зміни розміру, змінюємо позицію кульки та фон
+            circle.style.left = randomX + "px";
+            circle.style.top = randomY + "px";
+            circle.style.backgroundColor = circleColor;
+            document.getElementById("screen").style.backgroundColor = backgroundColor;
+          }, 300);
         }
       });
 
